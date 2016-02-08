@@ -1,9 +1,3 @@
-<p>
-</p>
-<p>
-	If you want to test it with https then you can run the server at https://localhost:5000
-</p>
-
 # Screen Share
 
   - git clone https://github.com/sabareeshkk/screen_share.git
