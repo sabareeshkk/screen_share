@@ -1,11 +1,5 @@
 # Screen Share
 
-  - git clone https://github.com/sabareeshkk/screen_share.git
-  - cd screen_share
-  - npm install
-  - bower install
-  - npm start
-
 Markdown is a lightweight markup language based on the formatting conventions that people naturally use in email.  As [John Gruber] writes on the [Markdown site][df1]
 
 > The overriding design goal for Markdown's
