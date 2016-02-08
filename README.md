@@ -4,6 +4,9 @@
 		$ git clone https://github.com/sabareeshkk/screen_share.git
 	</li>
 	<li>
+		$ cd screen_share
+	</li>
+	<li>
 		$ npm install
 	</li>
 	<li>
