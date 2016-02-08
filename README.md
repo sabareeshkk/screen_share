@@ -1,36 +1,16 @@
-<h1> Screen Share</h1>
-<ul>
-	<li>
-		$ git clone https://github.com/sabareeshkk/screen_share.git
-	</li>
-	<li>
-		$ cd screen_share
-	</li>
-	<li>
-		$ npm install
-	</li>
-	<li>
-		$ bower install
-	</li>
-	<li>
-		$ npm start
-	</li>
-</ul>
-
 <p>
-	Just start the serve at http://localhost:8000
 </p>
 <p>
 	If you want to test it with https then you can run the server at https://localhost:5000
 </p>
 
-# Dillinger
+# Screen Share
 
-Dillinger is a cloud-enabled, mobile-ready, offline-storage, AngularJS powered HTML5 Markdown editor.
-
-  - Type some Markdown on the left
-  - See HTML in the right
-  - Magic
+  - git clone https://github.com/sabareeshkk/screen_share.git
+  - cd screen_share
+  - npm install
+  - bower install
+  - npm start
 
 Markdown is a lightweight markup language based on the formatting conventions that people naturally use in email.  As [John Gruber] writes on the [Markdown site][df1]
 
@@ -45,56 +25,39 @@ Markdown is a lightweight markup language based on the formatting conventions th
 This text you see here is *actually* written in Markdown! To get a feel for Markdown's syntax, type some text into the left window and watch the results in the right.
 
 ### Version
-3.2.7
+1.0.0
 
 ### Tech
 
 Dillinger uses a number of open source projects to work properly:
 
-* [AngularJS] - HTML enhanced for web apps!
-* [Ace Editor] - awesome web-based text editor
-* [Marked] - a super fast port of Markdown to JavaScript
 * [Twitter Bootstrap] - great UI boilerplate for modern web apps
 * [node.js] - evented I/O for the backend
 * [Express] - fast node.js network app framework [@tjholowaychuk]
-* [Gulp] - the streaming build system
-* [keymaster.js] - awesome keyboard handler lib by [@thomasfuchs]
-* [jQuery] - duh
+
 
 And of course Dillinger itself is open source with a [public repository][dill]
  on GitHub.
 
 ### Installation
 
-You need Gulp installed globally:
-
 ```sh
-$ npm i -g gulp
-```
-
-```sh
-$ git clone [git-repo-url] dillinger
-$ cd dillinger
-$ npm i -d
-$ gulp build --prod
-$ NODE_ENV=production node app
+$ git clone https://github.com/sabareeshkk/screen_share.git
+$ cd screen_share
+$ npm install
+$ bower install
 ```
 
 ### Plugins
 
 Dillinger is currently extended with the following plugins
 
-* Dropbox
 * Github
-* Google Drive
-* OneDrive
+* opentok
 
 Readmes, how to use them in your own application can be found here:
 
-* [plugins/dropbox/README.md] [PlDb]
 * [plugins/github/README.md] [PlGh]
-* [plugins/googledrive/README.md] [PlGd]
-* [plugins/onedrive/README.md] [PlOd]
 
 ### Development
 
@@ -107,17 +70,7 @@ Open your favorite Terminal and run these commands.
 
 First Tab:
 ```sh
-$ node app
-```
-
-Second Tab:
-```sh
-$ gulp watch
-```
-
-(optional) Third:
-```sh
-$ karma start
+$ npm start
 ```
 
 ### Docker, N|Solid and NGINX
@@ -126,14 +79,11 @@ More details coming soon.
 
 #### docker-compose.yml
 
-Change the path for the nginx conf mounting path to your full path, not mine!
+coming soon
 
 ### Todos
 
  - Write Tests
- - Rethink Github Save
- - Add Code Comments
- - Add Night Mode
 
 License
 ----
