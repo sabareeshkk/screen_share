@@ -1,0 +1,5 @@
+node_modules
+bower_components
+screen_opentok
+canvas.html
+npm-debug.log

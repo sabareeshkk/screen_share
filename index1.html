@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <style>
+    .screen-border{
+      border:1px solid #ccc;
+    }
+    canvas {
+      border: 1px solid black;
+      position: absolute; 
+      z-index: 2;
+    }
+    #flip {
+      position: relative;
+      margin: 0 auto;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Brand</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+          <li> <a href="javascript:void(0)" onclick="send_data();">Run JavaScript Code</a></li>
+        <!-- <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li> -->
+      </ul>
+     <!--  <form class="navbar-form navbar-left" role="search">
+       <div class="form-group">
+         <input type="text" class="form-control" placeholder="Search">
+       </div>
+       <button type="submit" class="btn btn-default">Submit</button>
+     </form> -->
+     <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="javascript:void(0)" onclick="timer();">
+          <span class="glyphicon glyphicon-time" aria-hidden="true"></span></a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" onclick="reset();"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<!-- video jumbo tron div starts --> 
+<div class="container-fluid">
+  <canvas id="myCanvas" width="1273" height="448"></canvas>
+  <div class="row" id="flip">
+     <!--  <div class="col-lg-9 col-xs-12 screen-border" id="screens">
+   </div> -->
+   <div class="col-lg-6" id="people"></div>
+   <div class="col-lg-6" id="camera"></div>
+     <!--  <div class="col-lg-3 hidden-lg" id="screen-preview">
+   </div> -->
+ </div>
+</div>
+
+</div>
+<!-- video div stopped -->
+
+<!-- Navbar fixed bottom -->
+<!-- <div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Project name</a>
+    </div>
+    <div class="navbar-collapse collapse">
+  
+      Left nav
+      <ul class="nav navbar-nav">
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#" class="dropup">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li class="dropdown-header">Nav header</li>
+            <li><a href="#">Separated link</a></li>
+            <li><a href="#">One more separated link <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">A long sub menu <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="disabled"><a class="disabled" href="#">Disabled item</a></li>
+                    <li><a href="#">One more link</a></li>
+                    <li><a href="#">Menu item 1</a></li>
+                    <li><a href="#">Menu item 2</a></li>
+                    <li><a href="#">Menu item 5</a></li>
+                    <li><a href="#">Menu item 60</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Another link</a></li>
+                <li><a href="#">One more link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+  
+      Right nav
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="bootstrap-navbar.html">Default</a></li>
+        <li><a href="bootstrap-navbar-static-top.html">Static top</a></li>
+        <li><a href="bootstrap-navbar-fixed-top.html">Fixed top</a></li>
+        <li class="active"><a href="bootstrap-navbar-fixed-bottom.html">Fixed bottom</a></li>
+        <li><a href="#" class="dropup">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li class="dropdown-header">Nav header</li>
+            <li><a href="#">A sub menu <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="disabled"><a class="disabled" href="#">Disabled item</a></li>
+                <li><a href="#">One more link</a></li>
+              </ul>
+            </li>
+            <li><a href="#">A separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+  
+    </div>/.nav-collapse
+  </div>/.container
+</div> -->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<script src="https://static.opentok.com/v2.4/js/opentok.min.js"></script>
+<script type="text/javascript">
+
+  // Go to https://dashboard.tokbox.com/ to find your OpenTok
+  // API key and generate a test session ID and token:
+  var apiKey    = "45472022";
+  var sessionId = "2_MX40NTQ3MjAyMn5-MTQ1NDQ4MTU0OTU0MH44a1NNN1VuTjdOclhNTXlGMkhBLys4WEJ-UH4";
+  var token     = "T1==cGFydG5lcl9pZD00NTQ3MjAyMiZzaWc9NWIxY2ZlNTFmZWRhYjJlYjcyODNhMjYwNGQwMmMwNTBlMGFjNzhhNTpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTJfTVg0ME5UUTNNakF5TW41LU1UUTFORFE0TVRVME9UVTBNSDQ0YTFOTk4xVnVUamRPY2xoTlRYbEdNa2hCTHlzNFdFSi1VSDQmY3JlYXRlX3RpbWU9MTQ1NDQ4MTU5OSZub25jZT0wLjY5MDE0MTQ3NzYxMDQ0ODQmZXhwaXJlX3RpbWU9MTQ1NzA3MzU0MyZjb25uZWN0aW9uX2RhdGE9";
+  
+  //Initializing session
+  var session = OT.initSession(apiKey, sessionId);
+
+  session.connect(token, function(error) {
+    // publisher screen height and width sections
+    var publisherOptions = {
+      insertMode: 'append',
+      width: '100%',
+      height: 450 
+    };
+
+    //initializing publisher div
+    var publisher = OT.initPublisher('camera', publisherOptions);
+    session.publish(publisher, function() {
+      });
+  });
+  
+  //accepting streams and establishing connection 
+  session.on('streamCreated', function(event) {
+    // height and width for the screen sharing option
+    var subOptions = {insertMode: 'append',
+      width: '100%',
+      height: 450 
+    };
+
+  // setting height and widht for the subscriber window
+  var peopleOptions = {insertMode: 'append',
+    width: '100%',
+    height: 450 
+  };
+
+  //selecting  screensharing or subscriber 
+  if(event.stream.videoType === 'screen') {
+    session.subscribe(event.stream, 'screens', subOptions);
+  } else {
+    session.subscribe(event.stream, 'people', peopleOptions);
+  }
+
+  });
+
+  //sending pixel data to subscriber  
+  session.on("signal:pixels", function(event) {
+
+    //for connection id
+    //console.log('connectionid', event.from.id);
+    var data = event.data;
+      for (var i=0; i < data.length; i++){
+        context.globalCompositeOperation = "source-over";
+        context.beginPath();
+        context.moveTo(data[i].last_mouse.x, data[i].last_mouse.y);
+        context.lineTo(data[i].mouse.x, data[i].mouse.y);
+        context.stroke();
+        context.closePath();
+      }
+    });
+
+    // For Google Chrome only, register your extension by ID. You can
+    // find it at chrome://extensions once the extension is installed.
+    //
+    // The last parameter assumes you are using the latest version (version 2)
+    // of the OpenTok Chrome extension source code.
+
+
+    //OT.registerScreenSharingExtension('chrome', 'gloebbmiakfjnkcohlmbciijakonfehm');
+
+    /*function screenshare() {
+      OT.checkScreenSharingCapability(function(response) {
+        if (!response.supported || response.extensionRegistered === false) {
+          alert('This browser does not support screen sharing.');
+        } else if (response.extensionInstalled === false) {
+          alert('Please install the screen sharing extension and load your app over https.');
+        } else {
+
+          // Screen sharing is available. Publish the screen.
+          var publishOptions = {};
+          //publishOptions.maxResolution = { width: 1920, height: 1080 };
+          publishOptions.videoSource = 'screen';
+          //publishOptions.width = '100%';
+          publishOptions.height = 225;
+          var screenSharingPublisher = OT.initPublisher('screen-preview', publishOptions);
+          session.publish(screenSharingPublisher, function(error) {
+            if (error) {
+              alert('Could not share the screen: ' + error.message);
+            }
+          });
+        }
+      });
+    }*/
+  </script>
+  <script>
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+
+    context.lineWidth = 5;
+    context.lineJoin = 'round';
+    context.lineCap = 'round';
+    context.strokeStyle = '#ff0000'
+    
+    //Initializes the mouse cordinates to track
+    var mouse = {x: 0, y: 0};
+    var last_mouse = {x: 0, y: 0};
+    
+    //for storing a single (x,y) cordinate pair
+        
+    /* Mouse Capturing Work */
+    canvas.addEventListener('mousemove', function(e) {
+      last_mouse.x = mouse.x;
+      last_mouse.y = mouse.y;
+      
+      mouse.x = e.pageX - this.offsetLeft;
+      mouse.y = e.pageY - this.offsetTop;
+    }, false)
+
+    // Tracking the mouse pointer when moving
+    canvas.addEventListener('mousedown', function(){
+      canvas.addEventListener('mousemove', onPaint, false);
+    }, false);
+
+    //untrack the mouse pionter 
+    canvas.addEventListener('mouseup', function(){
+      canvas.removeEventListener('mousemove', onPaint, false); 
+    }, false);
+
+    var onPaint = function() {
+      context.beginPath();
+      context.moveTo(last_mouse.x, last_mouse.y);
+      context.lineTo(mouse.x, mouse.y);
+      context.stroke();
+      context.closePath();
+      send_data([{'mouse':mouse, 'last_mouse': last_mouse}]); 
+    };
+     
+    //reset the camvas 
+    function reset() {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    //send signal to all clients connect to the session
+    function send_data(full_data){
+      // We send data in small chunks so that they fit in a signal
+      // Each packet is maximum ~250 chars, we can fit 8192/250 ~= 32 updates per signal
+
+      var dummy_data = full_data.slice();
+      while(dummy_data.length) {
+        var chunk_data = dummy_data.splice(0, Math.min(dummy_data.length, 32));
+        send_signal('pixels', chunk_data);
+      }
+      send_signal('pixels', full_data);
+  }
+
+  // Sending the signal and the points 
+  function send_signal(type, data){
+
+    session.signal(
+      {
+        data: data,
+        type: type
+      }, signalcallback);
+  }
+
+  // signal callback 
+  var signalcallback = function(error) {
+    if (error) {
+      console.log("signal error ("
+       + error.code
+       + "): " + error.message);
+    } else {
+        /*console.log("signal sent.");
+        line_data = [];*/
+      }
+    };
+  </script>
+</body>
+</html>
