@@ -5,6 +5,11 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <link href="tooltip/jquery.toolbar.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href="time/inc/TimeCircles.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" type="text/css" href="countdown/CSS/jquery.countdownTimer.css" /> -->
+
   <style>
     canvas {
       border: 1px solid black;
@@ -22,6 +27,10 @@
       height: 683px;
       position: absolute;
       z-index: 1
+    }
+    .timer {
+      position: absolute;
+      z-index: 3;
     }
   </style>
 </head>
@@ -44,52 +53,120 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
           <li> <a href="javascript:void(0)" onclick="send_data();">Run JavaScript Code</a></li>
-      </ul>
-     <ul class="nav navbar-nav navbar-right">
-      <li>
-        <a href="javascript:void(0)" onclick="timer();">
-          <span class="glyphicon glyphicon-time" aria-hidden="true"></span></a>
-        </li>
-        <li>
-          <a href="javascript:void(0)" onclick="reset();"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="javascript:void(0)" onclick="timer();">
+              <span class="glyphicon glyphicon-time" aria-hidden="true"></span></a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" onclick="reset();"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
           </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
 
 
-<!-- video jumbo tron div starts --> 
-<div class="container-fluid" id="logic_div">
-  <canvas id="myCanvas" width="1273" height="448"></canvas>
-  <div class="people_s" id="people"></div>
-  <div class="camera_p" id="camera"></div>
-</div>
+    <div class="container-fluid" id="logic_div">
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+      <div class="row timer">
+        <div class="col-lg-12">
+          <h1><time>00:00:00</time></h1>
+          <button id="start">start</button>
+          <button id="stop">stop</button>
+          <button id="clear">reset</button>
+        </div>
+        <div class="col-lg-2">
+          <div id="countdowntimer" class="timer"></div>
+        </div>
+      </div>
+      <canvas id="myCanvas" width="1273" height="448"></canvas>
+      <div class="people_s" id="people"></div>
+      <div class="camera_p" id="camera"></div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-<script src="https://static.opentok.com/v2.4/js/opentok.min.js"></script>
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script>
-  $(function() {
-    $( "#camera" ).draggable({containment: 'window'});
-  });
-</script>
-<script type="text/javascript">
+    <script src="https://static.opentok.com/v2.4/js/opentok.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="tooltip/jquery.toolbar.js"></script>
+    <script type="text/javascript" src="time/inc/TimeCircles.js"></script>
+    <script type="text/javascript" src="countdown/jquery.countdownTimer.js"></script>
+
+    <script>
+      $(function() {
+        $( "#camera" ).draggable({containment: 'window'});
+        $( "#camera" ).resizable({animateEasing: "easeOutBounce"});
+      });
+    </script>
+    <script>
+      $(function(){
+        $("#countdowntimer").countdowntimer({
+          minutes:5,
+          size: 'lg',
+          pauseButton: 'pauseBtnhms',
+          stopButton: 'stopBtnhms'
+        });
+      });
+    </script>
+    <script>
+      var h1 = document.getElementsByTagName('h1')[0],
+      start = document.getElementById('start'),
+      stop = document.getElementById('stop'),
+      clear = document.getElementById('clear'),
+      seconds = 0, minutes = 0, hours = 0,
+      t;
+
+      function add() {
+        seconds++;
+        if (seconds >= 60) {
+          seconds = 0;
+          minutes++;
+          if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+          }
+        }
+
+        h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+
+        timer();
+      }
+      function timer() {
+        t = setTimeout(add, 1000);
+      }
+      timer();
+
+
+      /* Start button */
+      start.onclick = timer;
+
+      /* Stop button */
+      stop.onclick = function() {
+        clearTimeout(t);
+      }
+
+      /* Clear button */
+      clear.onclick = function() {
+        h1.textContent = "00:00:00";
+        seconds = 0; minutes = 0; hours = 0;
+      }
+    </script>
+    <script type="text/javascript">
 
   // Go to https://dashboard.tokbox.com/ to find your OpenTok
   // API key and generate a test session ID and token:
@@ -119,16 +196,16 @@
     // height and width for the screen sharing option
     if (!count) {
       var subOptions = {insertMode: 'append',
-        width: '100%',
-        height: '100%' 
-      };
+      width: '100%',
+      height: '100%' 
+    };
 
       // setting height and width for the subscriber window
       var peopleOptions = {insertMode: 'append',
-        width: '100%',
-        height: '100%' 
-      };
-      var count = 0;
+      width: '100%',
+      height: '100%' 
+    };
+    var count = 0;
       //selecting  screensharing or subscriber 
       if(event.stream.videoType === 'screen') {
         session.subscribe(event.stream, 'screens', subOptions);
@@ -137,12 +214,17 @@
         count = count + 1;
       }
     }
-});
+  });
 
   //sending pixel data to subscriber  
   session.on("signal:pixels", function(event) {
     //for connection id
     //console.log('connectionid', event.from.id);
+    context.lineWidth = 5;
+    context.lineJoin = 'round';
+    context.lineCap = 'round';
+    context.strokeStyle = '#0C9DBF'
+
     var data = event.data;
     for (var i=0; i < data.length; i++){
       context.globalCompositeOperation = "source-over";
@@ -165,7 +247,6 @@
 
 
   function resizeCanvas() {
-    console.log('heght', window.innerHeight);
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   }

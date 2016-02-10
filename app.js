@@ -6,6 +6,8 @@ var path    = require("path");
 
 var app = express();
 
+app.use(express.static(__dirname + '/public'));
+
 var options = {
   key: fs.readFileSync('/etc/apache2/ssl/apache.key'),
   cert: fs.readFileSync('/etc/apache2/ssl/apache.crt')
