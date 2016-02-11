@@ -88,7 +88,16 @@
           <button id="clear">reset</button>
         </div>
         <div class="col-lg-2">
-          <div id="countdowntimer" class="timer"></div>
+          <div id="countdowntimer"></div>
+        </div>
+        <div class="col-lg-3">
+          <div id="sixtysec">60sec</div>
+        </div>
+        <div class="col-lg-3">
+          <div id="tensec">10sec</div>
+        </div>
+        <div class="col-lg-3">
+          <div id="twentysec">20sec</div>
         </div>
       </div>
       <canvas id="myCanvas" width="1273" height="448"></canvas>
@@ -115,12 +124,33 @@
     </script>
     <script>
       $(function(){
+        var twenty = document.getElementById('twentysec');
+        var sixtysec = document.getElementById('sixtysec');
+        var tensec = document.getElementById('tensec');
         $("#countdowntimer").countdowntimer({
-          minutes:5,
+          minutes:60,
           size: 'lg',
           pauseButton: 'pauseBtnhms',
           stopButton: 'stopBtnhms'
         });
+        sixtysec.onclick = function () {
+          $("#sixtysec").countdowntimer({
+            seconds:60,
+            size:"lg"
+          });
+        }
+        tensec.onclick = function () {
+        $("#tensec").countdowntimer({
+          seconds:10,
+          size:"lg"
+        });
+        }
+        twenty.onclick = function () {
+          $("#twentysec").countdowntimer({
+            seconds:20,
+            size:"lg"
+          });
+        }
       });
     </script>
     <script>
